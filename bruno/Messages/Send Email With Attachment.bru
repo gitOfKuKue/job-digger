@@ -1,0 +1,23 @@
+meta {
+  name: Send Email With Attachment
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/messages
+  body: multipart-form
+  auth: inherit
+}
+
+body:multipart-form {
+  contactId: {{contactId}}
+  subject: Hello from Job Digger (with file)
+  body: Hi — this test includes an attachment.
+  attachments: @file(../datasets/test-contacts.csv)
+}
+
+docs {
+  POST /messages with attachments
+  Same as Send Email, plus one or more `attachments` file parts (any file type).
+}

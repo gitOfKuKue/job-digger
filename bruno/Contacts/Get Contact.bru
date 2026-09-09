@@ -1,0 +1,16 @@
+meta {
+  name: Get Contact
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/contacts/{{contactId}}
+  body: none
+  auth: inherit
+}
+
+docs {
+  GET /contacts/:id
+  Run List Contacts first so {{contactId}} is set.
+}

@@ -1,0 +1,24 @@
+meta {
+  name: Send Email
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/messages
+  body: multipart-form
+  auth: inherit
+}
+
+body:multipart-form {
+  contactId: {{contactId}}
+  subject: Hello from Job Digger
+  body: Hi — this is a test email from the Bruno collection.
+}
+
+docs {
+  POST /messages
+  Requires Gmail session (jobdigger.sid).
+  Multipart fields: contactId, subject, body, optional attachments (repeatable, max 5, 10 MB each, 15 MB total).
+  Run List Contacts first so {{contactId}} is set.
+}

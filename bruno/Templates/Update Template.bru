@@ -1,0 +1,25 @@
+meta {
+  name: Update Template
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseUrl}}/templates/{{templateId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Follow up",
+    "subject": "Checking in with {{company}}",
+    "body": "Hi {{name}},\n\nWanted to follow up about {{title}}.\n"
+  }
+}
+
+docs {
+  PATCH /templates/:id
+  JSON or multipart. Optional keepAttachmentIds (JSON array of saved file ids)
+  plus attachments for new files. Omit keepAttachmentIds to leave saved files unchanged.
+}

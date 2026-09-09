@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  googleId     String    @unique
+  email        String
+  name         String?
+  accessToken  String?
+  refreshToken String?
+  tokenExpiry  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  messages     Message[]
+}
+
+model ImportJob {
+  id        String   @id @default(cuid())
+  filename  String
+  rowCount  Int
+  mapping   String
+  mode      String
+  createdAt DateTime @default(now())
+}
+
+model Contact {
+  id          String    @id @default(cuid())
+  email       String?
+  company     String?
+  name        String?
+  title       String?
+  location    String?
+  industry    String?
+  website     String?
+  linkedinUrl String?
+  phone       String?
+  extras      String?
+  importedAt  DateTime  @default(now())
+  importJobId String?
+  messages    Message[]
+
+  @@index([email])
+  @@index([company])
+  @@index([title])
+  @@index([location])
+  @@index([industry])
+}
+
+model Message {
+  id        String    @id @default(cuid())
+  contactId String
+  contact   Contact   @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?     @relation(fields: [userId], references: [id])
+  to        String
+  subject   String
+  body      String
+  gmailId   String?
+  status    String
+  error     String?
+  sentAt    DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model Template {
+  id        String   @id @default(cuid())
+  name      String
+  subject   String
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

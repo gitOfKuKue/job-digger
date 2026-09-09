@@ -1,0 +1,12 @@
+{
+  "name": "job-digger",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run start:dev --prefix api\" \"npm run dev --prefix web -- --port 3000\"",
+    "db:migrate": "npm run prisma:migrate --prefix api",
+    "db:generate": "npm run prisma:generate --prefix api"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

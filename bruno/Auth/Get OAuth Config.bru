@@ -1,0 +1,16 @@
+meta {
+  name: Get OAuth Config
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/auth/oauth-config
+  body: none
+  auth: inherit
+}
+
+docs {
+  GET /auth/oauth-config
+  Returns the Google redirect URI and client ID (no secret).
+}

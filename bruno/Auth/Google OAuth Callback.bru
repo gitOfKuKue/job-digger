@@ -1,0 +1,22 @@
+meta {
+  name: Google OAuth Callback
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/auth/google/callback
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~code: from-google
+  ~state: from-google
+}
+
+docs {
+  GET /auth/google/callback
+  Google redirects here with ?code=&state=. Do not call this by hand unless you have a valid OAuth code.
+  After success, Nest saves the session and redirects to {{frontendUrl}}/?connected=1
+}

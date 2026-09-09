@@ -1,0 +1,16 @@
+meta {
+  name: Get Contact Facets
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/contacts/facets
+  body: none
+  auth: inherit
+}
+
+docs {
+  GET /contacts/facets
+  Dataset totals and which filter fields are populated (title, company, location, industry).
+}

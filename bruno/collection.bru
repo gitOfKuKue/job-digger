@@ -1,0 +1,25 @@
+meta {
+  name: Job Digger API
+}
+
+headers {
+  Accept: application/json
+  Origin: {{frontendUrl}}
+}
+
+auth {
+  mode: none
+}
+
+docs {
+  NestJS API for Job Digger (web + Gmail outreach).
+
+  Base URL is {{baseUrl}} (Local: http://localhost:8080).
+  Session cookie name: jobdigger.sid
+
+  Google OAuth cannot finish inside Bruno. Open GET Auth → Start Google OAuth in a browser,
+  connect Gmail, then copy the jobdigger.sid cookie from localhost:8080 into Bruno's cookie jar
+  (or send authenticated requests from the same host after a browser login).
+
+  Run Contacts → List Contacts first to store {{contactId}} for Get Contact and Send Email.
+}

@@ -1,0 +1,36 @@
+meta {
+  name: List Contacts
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/contacts
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: {{page}}
+  pageSize: {{pageSize}}
+  ~q: kukue
+  ~title: Engineer
+  ~company: Northwind
+  ~location: Vietnam
+  ~industry: Software
+  ~hasEmail: true
+}
+
+script:post-response {
+  const data = res.getBody();
+  if (data && Array.isArray(data.items) && data.items[0] && data.items[0].id) {
+    bru.setEnvVar("contactId", data.items[0].id);
+  }
+}
+
+docs {
+  GET /contacts
+  Query: q, title, company, location, industry, hasEmail, page, pageSize.
+  Enable extra params (remove the ~) to filter.
+  Saves the first row id into {{contactId}}.
+}

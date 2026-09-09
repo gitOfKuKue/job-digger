@@ -1,0 +1,3 @@
+export const MAX_ATTACHMENTS = 5;
+export const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
+export const MAX_ATTACHMENT_TOTAL_BYTES = 15 * 1024 * 1024;

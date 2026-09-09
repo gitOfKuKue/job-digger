@@ -1,0 +1,21 @@
+meta {
+  name: List Messages
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/messages
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: {{page}}
+  pageSize: {{pageSize}}
+}
+
+docs {
+  GET /messages
+  Outreach history (sent / failed / draft).
+}

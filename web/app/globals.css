@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f8fafc;
+  --color-paper-raised: #ffffff;
+  --color-ink: #0f172a;
+  --color-ink-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-forest: #0f172a;
+  --color-gold: #0f172a;
+  --color-danger: #dc2626;
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-geist-sans);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+input, select, textarea, button {
+  font: inherit;
+}
+
+.rich-editor-content {
+  min-height: 100%;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.rich-editor-content p {
+  margin: 0 0 0.75em;
+}
+
+.rich-editor-content p:last-child {
+  margin-bottom: 0;
+}
+
+.rich-editor-content h2 {
+  margin: 0 0 0.5em;
+  font-size: 1.1rem;
+  font-weight: 650;
+}
+
+.rich-editor-content h3 {
+  margin: 0 0 0.5em;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.rich-editor-content ul {
+  margin: 0 0 0.75em;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.rich-editor-content ol {
+  margin: 0 0 0.75em;
+  padding-left: 1.25rem;
+  list-style: decimal;
+}
+
+.rich-editor-content li {
+  margin: 0.15em 0;
+}
+
+.rich-editor-content blockquote {
+  margin: 0 0 0.75em;
+  border-left: 3px solid var(--color-line);
+  padding-left: 0.75rem;
+  color: var(--color-ink-muted);
+}
+
+.rich-editor-content a {
+  text-decoration: underline;
+}
+
+.rich-editor-content u {
+  text-decoration: underline;
+}
+
+.rich-editor-content s {
+  text-decoration: line-through;
+}
+
+.rich-editor-content p.is-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--color-ink-muted);
+}

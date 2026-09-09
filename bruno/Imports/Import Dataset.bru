@@ -1,0 +1,31 @@
+meta {
+  name: Import Dataset
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/imports
+  body: multipart-form
+  auth: inherit
+}
+
+body:multipart-form {
+  file: @file(../datasets/test-contacts.csv)
+  mapping: {"Company":"company","Full Name":"name","Job Title":"title","Email":"email","Location":"location","Industry":"industry","Phone":"phone","Website":"website","LinkedIn":"linkedinUrl"}
+  mode: merge
+}
+
+docs {
+  POST /imports
+  Multipart fields:
+  - file: CSV or JSON
+  - mapping: JSON string of column → canonical field
+  - mode: merge | replace
+
+  Canonical fields: email, company, name, title, location, industry, website, linkedinUrl, phone
+
+  After import, the full contact list is written to the configured Google Sheet
+  (GOOGLE_SHEETS_SPREADSHEET_ID / GOOGLE_SHEETS_GID). Requires a Google session
+  with spreadsheets scope. Response includes googleSheet.ok and googleSheet.url.
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Create Template
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/templates
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Follow up",
+    "subject": "Following up — {{company}}",
+    "body": "Hi {{name}},\n\nJust bumping this in case it helps.\n\nThanks,\n"
+  }
+}
+
+docs {
+  POST /templates
+  JSON or multipart. Fields: name, subject, body.
+  Optional files field: attachments (up to 5). Placeholders: {{name}} {{title}} {{company}}
+}

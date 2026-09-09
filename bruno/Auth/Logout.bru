@@ -1,0 +1,16 @@
+meta {
+  name: Logout
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/auth/logout
+  body: none
+  auth: inherit
+}
+
+docs {
+  POST /auth/logout
+  Destroys the session and clears the jobdigger.sid cookie.
+}

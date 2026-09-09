@@ -1,0 +1,28 @@
+meta {
+  name: Bulk Send
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/messages/bulk
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "templateId": "{{templateId}}",
+    "q": "",
+    "title": "",
+    "company": "",
+    "location": "",
+    "industry": ""
+  }
+}
+
+docs {
+  POST /messages/bulk
+  Requires Gmail session. Sends a saved template to matching contacts that have email (max 100).
+  Run List Templates first for {{templateId}}. Optional contactIds array instead of filters.
+}

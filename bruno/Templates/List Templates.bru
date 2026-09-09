@@ -1,0 +1,24 @@
+meta {
+  name: List Templates
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/templates
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  const items = res.getBody();
+  if (Array.isArray(items) && items[0] && items[0].id) {
+    bru.setEnvVar("templateId", items[0].id);
+  }
+}
+
+docs {
+  GET /templates
+  Saved outreach templates. Seeds Intro and Role outreach if the table is empty.
+  Each item includes attachments: [{ id, filename, size, contentType }].
+}

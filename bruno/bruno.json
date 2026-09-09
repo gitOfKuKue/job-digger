@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "Job Digger API",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

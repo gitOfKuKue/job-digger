@@ -1,0 +1,21 @@
+meta {
+  name: Preview Import
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/imports/preview
+  body: multipart-form
+  auth: inherit
+}
+
+body:multipart-form {
+  file: @file(../datasets/test-contacts.csv)
+}
+
+docs {
+  POST /imports/preview
+  Multipart field: file (CSV or JSON, max 15 MB).
+  Returns headers, sample rows, and a suggested column mapping.
+}
